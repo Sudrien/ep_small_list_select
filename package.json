@@ -1,19 +1,22 @@
 {
-  "name": "ep_small_list",
-  "version": "0.4.0",
-  "description": "Adds a list of all pads on the index-page",
+  "name": "ep_small_list_select",
+  "version": "0.4.1",
+  "description": "Adds a select of all pads on the index-page",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/spruce/ep_small_list.git"
+    "url": "git://github.com/Sudrien/ep_small_list_select.git"
   },
   "keywords": [
     "index",
     "list"
   ],
   "author": "Spruce (Felix Fichte) <dev@spruce.de>",
+  "contributors": [
+    "Sudrien <_+github@sudrien.net> (https://sudrien.net/)"
+    ],
   "license": "BSD"
 }

@@ -1,7 +1,7 @@
 ep_small_list_select
 ====================
 
-A small script for [etherpad-lite](https://github.com/ether/etherpad-lite) which adds all pads to the index page as a <select>. Based on spruce/ep_small_list
+A small script for [etherpad-lite](https://github.com/ether/etherpad-lite) which adds all pads to the index page as a <select>. Based on spruce/ep_small_list.
 
 ## Installation
 ```console
