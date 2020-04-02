@@ -1,6 +1,14 @@
 var padManager = require('ep_etherpad-lite/node/db/PadManager');
 exports.eejsBlock_indexWrapper = function(hook_name, args, cb) {
-    args.content += '<div id="small_list_select"></div><script src="./static/js/jquery.js"><script>(function() { $("#small_list_select").load("./small_list_select"); })();</script>';
+    args.content += '<div id="small_list_select"></div><script src="./static/js/jquery.js"></script>
+    <script>
+      $(function () { $("#small_list_select").load("./small_list_select"); });
+        // go2Name() has hard coded id
+        function go2NameSelect(){
+          var padname = document.getElementById("padname_select").value;
+          padname.length > 0 ? window.location = "p/" + padname.options[padname.selectedIndex].value : alert("Please select a name")
+          }
+    </script>';
 };
 
 exports.registerRoute = function(hook_name, args, cb) {
@@ -25,7 +33,7 @@ function createListSelect(data){
   //I probably want the list of names, not IDs
   console.info(data);
   //use the exact same form as above
-  r = '<form action="#" id="go2NameSelectForm"><select id="padname_select"><option></option>';
+  r = '<form action="#" onsubmit="go2NameSelect();return false;"><select id="padname_select"><option></option>';
   if(data && data.padIDs){
     for (var i = 0; i < data.padIDs.length; i++) {
         r += '<option value="' + data.padIDs[i] + '">' + data.padIDs[i] + '</option>';
@@ -36,14 +44,3 @@ function createListSelect(data){
 }
 
 
-document.querySelector("#go2NameSelectForm").addEventListener("submit", function(event){
-  event.preventDefault();
-  go2NameSelect();
-  });
-	
-	
-// go2Name() has hard coded id
-function go2NameSelect(){
-  var padname = document.getElementById("padname_select").value;
-  padname.length > 0 ? window.location = "p/" + padname.options[padname.selectedIndex].value : alert("Please select a name")
-}
