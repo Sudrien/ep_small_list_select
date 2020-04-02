@@ -1,6 +1,6 @@
 var padManager = require('ep_etherpad-lite/node/db/PadManager');
 exports.eejsBlock_indexWrapper = function(hook_name, args, cb) {
-    args.content += '<div id="small_list_select"></div><script src="./static/js/jquery.js"></script><script>$(function () { $("#small_list_select").load("./small_list_select"); });</script>';
+    args.content += '<div id="small_list_select"></div><script src="./static/js/jquery.js"><script>(function() { $("#small_list_select").load("./small_list_select"); })();</script>';
 };
 
 exports.registerRoute = function(hook_name, args, cb) {
@@ -36,10 +36,9 @@ function createListSelect(data){
 }
 
 
-$("#go2NameSelectForm").on("submit", function(event){
+document.querySelector("#go2NameSelectForm").addEventListener("submit", function(event){
   event.preventDefault();
   go2NameSelect();
-  return false;
   });
 	
 	
