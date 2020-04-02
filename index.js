@@ -25,7 +25,7 @@ function createListSelect(data){
   //I probably want the list of names, not IDs
   console.info(data);
   //use the exact same form as above
-  r = '<form action="#" onsubmit="go2NameSelect();return false;"><select id="padname_select"><option></option>';
+  r = '<form action="#" id="go2NameSelectForm"><select id="padname_select"><option></option>';
   if(data && data.padIDs){
     for (var i = 0; i < data.padIDs.length; i++) {
         r += '<option value="' + data.padIDs[i] + '">' + data.padIDs[i] + '</option>';
@@ -35,6 +35,14 @@ function createListSelect(data){
   return r;
 }
 
+
+$("#go2NameSelectForm").on("submit", function(event){
+  event.preventDefault();
+  go2NameSelect();
+  return false;
+  });
+	
+	
 // go2Name() has hard coded id
 function go2NameSelect(){
   var padname = document.getElementById("padname_select").value;
